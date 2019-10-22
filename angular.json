@@ -3,9 +3,13 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "adminWebPage": {
+    "profileApp": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/adminWebPage",
+            "outputPath": "dist/profileApp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +28,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "node_modules/animate.css/animate.css",
+              "src/styles.scss"
+          ],
+          "scripts": [
+            "node_modules/chart.js/dist/Chart.js",
+            "node_modules/hammerjs/hammer.min.js"
+          ]
           },
           "configurations": {
             "production": {
@@ -63,18 +77,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "adminWebPage:build"
+            "browserTarget": "profileApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "adminWebPage:build:production"
+              "browserTarget": "profileApp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "adminWebPage:build"
+            "browserTarget": "profileApp:build"
           }
         },
         "test": {
@@ -89,7 +103,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -111,15 +125,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "adminWebPage:serve"
+            "devServerTarget": "profileApp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "adminWebPage:serve:production"
+              "devServerTarget": "profileApp:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "adminWebPage"
+  "defaultProject": "profileApp"
 }

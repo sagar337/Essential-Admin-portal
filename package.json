@@ -1,5 +1,5 @@
 {
-  "name": "admin-web-page",
+  "name": "profile-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "aws-deploy": "aws s3 sync dist/profileApp/ s3://essentialsadmin-app"
   },
   "private": true,
   "dependencies": {
@@ -16,9 +17,19 @@
     "@angular/compiler": "~8.2.9",
     "@angular/core": "~8.2.9",
     "@angular/forms": "~8.2.9",
-    "@angular/platform-browser": "~8.2.9",
+    "@angular/http": "^2.4.10",
+    "@angular/platform-browser": "^8.2.11",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
+    "@aws-amplify/ui": "^1.0.25",
+    "@types/chart.js": "^2.8.7",
+    "angular-bootstrap-md": "^8.3.1",
+    "animate.css": "^3.7.2",
+    "aws-amplify": "^1.1.40",
+    "aws-amplify-angular": "^3.0.15",
+    "chart.js": "^2.5.0",
+    "cors": "^2.8.5",
+    "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -28,9 +39,10 @@
     "@angular/cli": "~8.3.8",
     "@angular/compiler-cli": "~8.2.9",
     "@angular/language-service": "~8.2.9",
-    "@types/node": "~8.9.4",
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
