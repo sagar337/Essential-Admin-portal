@@ -38,8 +38,6 @@ export class DashboardComponent implements OnInit {
   }
 
   createCategory(): void {
-    console.log("created category");
-    console.log(this.hero.content);
     this.getService.createCategory(this.hero).subscribe((res: Hero) => {
       console.log(res.content);
     });

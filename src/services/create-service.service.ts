@@ -13,6 +13,15 @@ import { Hero } from "src/app/hero";
 export class CreateServiceService {
   postUrl =
     "https://0lkm60cp0g.execute-api.us-east-1.amazonaws.com/dev/createCategory";
+
+  putUrl =
+    "https://0lkm60cp0g.execute-api.us-east-1.amazonaws.com/dev/updateCategory/{id}";
+
+  getUrl = "";
+
+  deleteUrl =
+    "https://0lkm60cp0g.execute-api.us-east-1.amazonaws.com/dev/deleteContent/{id}";
+
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
@@ -22,15 +31,11 @@ export class CreateServiceService {
   };
 
   constructor(private http: HttpClient) {}
-  // createCategory(category: Hero): Observable<Hero> {
-  //   console.log("service layer");
-  //   console.log(category.content);
-  //   return this.http.post<Hero>(
-  //     "https://0lkm60cp0g.execute-api.us-east-1.amazonaws.com/dev/createCategory/{id}",
-  //     { id: "007", content: "dummy data" },
-  //     this.httpOptions
-  //   );
-  // }
+
+  getCategory(id: string): Observable<Hero> {
+    const url = `${this.getUrl}/${id}`;
+    return this.http.get<Hero>(url);
+  }
 
   createCategory(category: Hero) {
     return this.http.post(this.postUrl, category, this.httpOptions);
@@ -40,5 +45,15 @@ export class CreateServiceService {
     return this.http.get<Hero[]>(
       "https://0lkm60cp0g.execute-api.us-east-1.amazonaws.com/dev/getAllContent"
     );
+  }
+
+  updateCategory(category: Hero): Observable<Hero> {
+    return this.http.put<Hero>(this.putUrl, category, this.httpOptions);
+  }
+
+  deleteCategory(category: Hero) {
+    const id = typeof category === "string" ? category : category.id;
+    const url = `${this.deleteUrl}/${id}`;
+    return this.http.delete(url, this.httpOptions);
   }
 }
